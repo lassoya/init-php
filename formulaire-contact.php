@@ -22,31 +22,32 @@ if($_POST) {
       //2eme solution
       $date_de_naissance = date_format(date_create($date), 'd/m/Y');
   }
+  $taille = isset($_POST['taille']) && empty($_POST['taille']) == false ? $_POST['taille'] : 'N/A';
 
 
-  echo $nom . ' ' . $prenom. ' '. $date_de_naissance;
+  echo $nom . ' ' . $prenom. ' '. $date_de_naissance. ' ' .$taille;
 }
 
  ?>
 <form action="" method="POST">
   <div>
     <label for="nom" >Nom</label>
-    <input id="nom" type="text" name="nom">
+    <input value="<?= isset($_POST['nom']) ? $_POST['nom'] : '' ?>" id="nom" type="text" name="nom">
   </div>
   <div>
     <label for="prenom">Prénom</label>
-    <input id="prenom" type="text" name="prenom">
+    <input value="<?= isset($_POST['prenom']) ? $_POST['prenom'] : '' ?>" id="prenom" type="text" name="prenom">
   </div>
   <div>
     <label for="date_de_naissance">Date de naissance</label>
-    <input id="date_de_naissance" type="date" name="date_de_naissance">
+    <input id="date_de_naissance" value="<?= isset($_POST['date_de_naissance']) ? $_POST['date_de_naissance'] : '' ?>" type="date" name="date_de_naissance">
   </div>
   <div>
     <label for="taille">Taille</label>
     <select name="taille">
       <?php
         for($i=0; $i<=200; $i++){
-          echo "<option value='$i'>$i cm</option>";
+          echo "<option ". (isset($_POST['taille']) && $i== $_POST['taille'] ? 'selected': '')." value='$i'>$i cm</option>";
         }
        ?>
     </select>
