@@ -31,6 +31,12 @@ if($_POST) {
  ?>
 <form action="" method="POST">
   <div>
+    <label>Civilité</label>
+    <input type="radio" name="civilite" value="Monsieur"> Monsieur
+    <input type="radio" name="civilite" value="Madame"> Madame
+    <input type="radio" name="civilite" value="Non-binaire"> Non-binaire 
+  </div>
+  <div>
     <label for="nom" >Nom</label>
     <input value="<?= isset($_POST['nom']) ? $_POST['nom'] : '' ?>" id="nom" type="text" name="nom">
   </div>
