@@ -41,7 +41,17 @@ if($_POST) {
     <label for="date_de_naissance">Date de naissance</label>
     <input id="date_de_naissance" type="date" name="date_de_naissance">
   </div>
-  
+  <div>
+    <label for="taille">Taille</label>
+    <select name="taille">
+      <?php
+        for($i=0; $i<=200; $i++){
+          echo "<option value='$i'>$i cm</option>";
+        }
+       ?>
+    </select>
+    </div>
+
   <div>
     <button type="reset">Reset</button>
     <button type="submit">Envoyer</button>
