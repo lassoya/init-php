@@ -1,4 +1,6 @@
 <?php
+$civilite = ['Monsieur', 'Madame', 'Mademoiselle', 'Non-binaire'];
+
 //if(count($_POST)>0)
 if($_POST) {
 /*
@@ -32,9 +34,12 @@ if($_POST) {
 <form action="" method="POST">
   <div>
     <label>Civilité</label>
-    <input type="radio" name="civilite" value="Monsieur"> Monsieur
-    <input type="radio" name="civilite" value="Madame"> Madame
-    <input type="radio" name="civilite" value="Non-binaire"> Non-binaire 
+<?php
+    foreach($civilite as $value) {
+      echo '<input type="radio" name="civilite" value="' . $value . '"> '. $value;
+    }
+?>
+
   </div>
   <div>
     <label for="nom" >Nom</label>
