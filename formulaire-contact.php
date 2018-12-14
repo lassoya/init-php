@@ -1,4 +1,5 @@
 <?php
+//EXERCICE n°1
 $civilite = ['Monsieur', 'Madame', 'Mademoiselle', 'Non-binaire'];
 
 //if(count($_POST)>0)
@@ -31,10 +32,12 @@ if($_POST) {
 }
 
  ?>
+
 <form action="" method="POST">
   <div>
     <label>Civilité</label>
 <?php
+    //EXERCICE n°2
     foreach($civilite as $value) {
       echo '<input type="radio" name="civilite" value="' . $value . '"> '. $value;
     }
@@ -57,11 +60,16 @@ if($_POST) {
     <label for="taille">Taille</label>
     <select name="taille">
       <?php
-        for($i=0; $i<=200; $i++){
+        for($i=0; $i<=200; $i++) {
           echo "<option ". (isset($_POST['taille']) && $i== $_POST['taille'] ? 'selected': '')." value='$i'>$i cm</option>";
         }
        ?>
     </select>
+    </div>
+
+    <div>
+      <label for="message">Mesage</label>
+      <textarea id="message" name="message"><?= isset($_POST['message']) ? $_POST['message'] : '' ?></textarea>
     </div>
 
   <div>
