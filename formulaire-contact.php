@@ -99,8 +99,10 @@ if($_POST) {
     </div>
   </form>
 
-<?php if($_POST): ?>
-  <div style="border: 1px solid #CCC; background: #EEE">
+<?php if($_POST):
+  $color  = isset($_POST['civilite']) && ($_POST['civilite'] == 'Monsieur' || $_POST['civilite'] == 'Non-binaire') ? 'blue' : 'pink';
+  ?>
+  <div style="border: 1px solid #CCC; background: <?= $color ?>">
     <?php
       foreach($_POST as $key => $value):
         echo '<strong>' . $key . '</strong> : ' .htmlspecialchars($value) . '<br>';
