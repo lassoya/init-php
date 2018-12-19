@@ -103,7 +103,7 @@ if($_POST) {
   <div style="border: 1px solid #CCC; background: #EEE">
     <?php
       foreach($_POST as $key => $value):
-        echo '<strong>' . $key . '</strong> : ' .$value . '<br>';
+        echo '<strong>' . $key . '</strong> : ' .htmlspecialchars($value) . '<br>';
       endforeach;
      ?>
   </div>
