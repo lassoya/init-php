@@ -39,7 +39,8 @@ if($_POST) {
 <?php
     //EXERCICE n°2
     foreach($civilite as $value) {
-      echo '<input type="radio" name="civilite" value="' . $value . '"> '. $value;
+      echo '<input type="radio" '.
+      (isset($_POST['civilite']) && $_POST['civilite'] == $value  ? 'checked' : '' ).' name="civilite" value="' . $value . '"> '. $value;
     }
 ?>
 
@@ -69,7 +70,9 @@ if($_POST) {
 
     <div>
       <label for="message">Mesage</label>
-      <textarea id="message" name="message"><?= isset($_POST['message']) ? $_POST['message'] : '' ?></textarea>
+      <textarea id="message" name="message">
+        <?= isset($_POST['message']) ? $_POST['message'] : '' ?>
+      </textarea>
     </div>
 
   <div>
