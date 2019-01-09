@@ -1,6 +1,5 @@
-
-
 <?php
+
 $genre='homme';
 $age = 18;
 
