@@ -1,5 +1,5 @@
 <?php
-
+var_dump(sqrt(125));
 $genre='homme';
 $age = 18;
 
