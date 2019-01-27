@@ -17,9 +17,10 @@ function noms(): array {
 
 $noms = noms();
 
-print_r($noms[1]);
 
-
+/**
+* fonction permettant de compter de x à x
+*/
 function compter(int $nb1, int $nb2): array {
   $tab = [];
   //$tab = array();
@@ -30,5 +31,9 @@ function compter(int $nb1, int $nb2): array {
   return $tab;
 }
 
+//echo implode(', ', compter(0, 10));
 
-echo implode(', ', compter(0, 10));
+function triangle($a, $b){
+  $calc = $a*$a + $b*$b;
+  return sqrt($calc);
+}
