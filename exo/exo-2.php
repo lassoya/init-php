@@ -9,10 +9,22 @@ $nom = [
   'Veronique',
   'Toto',
   'René',
-  'Roger';
+  'Roger'
 ];
 
+$nomBis = [];
+//$nomBis = array();
+foreach($nom as $value) {
+  if(!in_array($value, $nomBis)) {
+    echo "$value<br>";
+    $nomBis[]=$value;
+  //array_push($nomBis, $value);
+  }
+}
 
+
+echo "<br>";
+echo "<br>";
 //EXO N°2
 $fruit = [
       'Banane',
@@ -22,3 +34,10 @@ $fruit = [
       'Fraise',
       'Framboise'
     ];
+
+
+foreach($fruit as $value) {
+  if(stripos($value, 'b')!==false) {
+      echo $value.'<br>';
+  }
+}
