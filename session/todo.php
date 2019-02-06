@@ -1,5 +1,17 @@
 <?php
 session_start();
+//Initialisation du tableau todo
+if(isset($_SESSION['todo']) === false) {
+  echo 'message';
+  $_SESSION['todo']= [];
+}
+
+//récupération des données
+if(isset($_POST['todo'])) {
+
+  print_r($_SESSION['todo']);
+}
+
 
 ?>
 
