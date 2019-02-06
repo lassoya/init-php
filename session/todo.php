@@ -1,5 +1,11 @@
 <?php
 session_start();
+
+//RESET TODO LIST
+if(isset($_GET['reset'])) {
+  $_SESSION['todo'] = [];
+}
+
 //Initialisation du tableau todo
 if(isset($_SESSION['todo']) === false) {
   $_SESSION['todo']= [];
@@ -18,8 +24,15 @@ if(isset($_POST['todo'])) {
   <input type="submit" value="Enregistrer"/>
 </form>
 
+<br>
+<a href="?reset=1">RESET</a>
+<br>
+
+
 <?php
-echo "<br>";
+echo "<h1>TODO LIST</h1>";
+echo "<ul>";
 foreach($_SESSION['todo'] as $todo) {
-  echo $todo .'<br>';
+  echo '<li>'.$todo.'</li>';
 }
+echo "</ul>";
