@@ -2,16 +2,14 @@
 session_start();
 //Initialisation du tableau todo
 if(isset($_SESSION['todo']) === false) {
-  echo 'message';
   $_SESSION['todo']= [];
 }
 
 //récupération des données
 if(isset($_POST['todo'])) {
-
-  print_r($_SESSION['todo']);
+  $_SESSION['todo'][] = $_POST['todo'];
+  //array_push($_SESSION['todo'], $_POST['todo']);
 }
-
 
 ?>
 
@@ -19,3 +17,9 @@ if(isset($_POST['todo'])) {
   <input name="todo" type="text">
   <input type="submit" value="Enregistrer"/>
 </form>
+
+<?php
+echo "<br>";
+foreach($_SESSION['todo'] as $todo) {
+  echo $todo .'<br>';
+}
