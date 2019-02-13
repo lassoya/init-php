@@ -2,6 +2,15 @@
 //DEMARRAGE SESSION
 session_start();
 
+//VERIFIER COOKIE EXISTE
+if(isset($_COOKIE['compteur'])) {
+   echo 'coucou';
+} else {
+  setcookie('compteur', 1, time()+3600);
+}
+
+
+
 //RESET TODO LIST
 if(isset($_GET['reset'])) {
   $_SESSION['todo'] = [];
