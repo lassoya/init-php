@@ -4,7 +4,7 @@ session_start();
 
 //VERIFIER COOKIE EXISTE
 if(isset($_COOKIE['compteur'])) {
-   echo 'coucou';
+   echo 'vous êtes venus ' . $_COOKIE['compteur'] . ' fois sur le site' ;
 } else {
   setcookie('compteur', 1, time()+3600);
 }
