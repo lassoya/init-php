@@ -37,7 +37,9 @@ if(isset($_POST['todo'])) {
 }
 
 ?>
-
+<br>
+  <a href="?resetCompteur=1">Reset compteur</a>
+<br>
 <form action="todo.php" method="post">
   <input name="todo" type="text">
   <input type="submit" value="Enregistrer"/>
