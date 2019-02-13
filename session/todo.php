@@ -1,10 +1,12 @@
 <?php
+//DEMARRAGE SESSION
 session_start();
 
 //RESET TODO LIST
 if(isset($_GET['reset'])) {
   $_SESSION['todo'] = [];
 }
+
 
 //Initialisation du tableau todo
 if(isset($_SESSION['todo']) === false) {
@@ -19,7 +21,7 @@ if(isset($_POST['todo'])) {
 
 ?>
 
-<form action="" method="post">
+<form action="todo.php" method="post">
   <input name="todo" type="text">
   <input type="submit" value="Enregistrer"/>
 </form>
@@ -32,7 +34,7 @@ if(isset($_POST['todo'])) {
 <?php
 echo "<h1>TODO LIST</h1>";
 echo "<ul>";
-foreach($_SESSION['todo'] as $todo) {
-  echo '<li>'.$todo.'</li>';
+foreach($_SESSION['todo'] as $index => $todo) {
+  echo '<li><a href="?delete=' . $index . '">X</a> '.$todo.'</li>';
 }
 echo "</ul>";
