@@ -2,6 +2,12 @@
 //DEMARRAGE SESSION
 session_start();
 
+if(isset($_GET['resetCompteur'])) {
+ setcookie('compteur', 0, time() +3600);
+ header('location: todo.php');
+ exit();
+}
+
 //VERIFIER COOKIE EXISTE
 if(isset($_COOKIE['compteur'])) {
    $newIndex = $_COOKIE['compteur'] + 1;
