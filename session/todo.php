@@ -4,6 +4,8 @@ session_start();
 
 //VERIFIER COOKIE EXISTE
 if(isset($_COOKIE['compteur'])) {
+   $newIndex = $_COOKIE['compteur'] + 1;
+   setcookie('compteur', $newIndex, time()+3600);
    echo 'vous êtes venus ' . $_COOKIE['compteur'] . ' fois sur le site' ;
 } else {
   setcookie('compteur', 1, time()+3600);
