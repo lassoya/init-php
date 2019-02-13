@@ -7,6 +7,12 @@ if(isset($_GET['reset'])) {
   $_SESSION['todo'] = [];
 }
 
+//RESET Element dans la liste
+if(isset($_GET['delete'])) {
+  $index = $_GET['delete'];
+  unset($_SESSION['todo'][$index]);
+}
+
 
 //Initialisation du tableau todo
 if(isset($_SESSION['todo']) === false) {
