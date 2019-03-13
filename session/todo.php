@@ -53,6 +53,8 @@ if(isset($_POST['todo'])) {
 
 ?>
 <br>
+vous êtes connectés <a href='login.php?deconnexion=true'>Déconnexion</a>
+<br>
   <a href="?resetCompteur=1">Reset compteur</a>
 <br>
 <form action="todo.php" method="post">

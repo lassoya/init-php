@@ -11,7 +11,10 @@ if(isset($_GET['deconnexion'])) {
 }
 
 if(isset($_SESSION['message'])){
-  echo $_SESSION['message'];
+  echo implode('<br>', $_SESSION['message']);
+//  foreach($_SESSION['message'] as $value){
+//    echo $value. '<br>';
+//  }
   unset($_SESSION['message']);
 }
 
@@ -19,6 +22,7 @@ if(isset($_POST['username'], $_POST['password'])
 && $username == $_POST['username']
 && $password == $_POST['password'] ){
   $_SESSION['username'] = $_POST['username'];
+  header('location: todo.php');
 } else if($_POST) {
   echo 'Vos identifiants ne sont pas corrects';
 }
@@ -37,7 +41,5 @@ if(isset($_SESSION['username']) == false):
   <input type="submit" value="Connexion">
 </form>
 <?php
-else:
-  echo "vous êtes connectés <a href='?deconnexion=true'>Déconnexion</a>";
 endif;
  ?>
