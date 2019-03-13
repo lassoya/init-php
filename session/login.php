@@ -4,10 +4,15 @@ session_start();
 $username= 'etudiant';
 $password = '1234';
 
-if(isset($_GET['deconnexion'])){
+if(isset($_GET['deconnexion'])) {
   unset($_SESSION['username']);
   header('location: login.php');
   exit;
+}
+
+if(isset($_SESSION['message'])){
+  echo $_SESSION['message'];
+  unset($_SESSION['message']);
 }
 
 if(isset($_POST['username'], $_POST['password'])

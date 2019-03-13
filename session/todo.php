@@ -1,6 +1,15 @@
 <?php
 //DEMARRAGE SESSION
 session_start();
+$_SESSION['message'] = [];
+
+$_SESSION['message'][] = 'vous êtiez sur todo.php';
+
+if(isset($_SESSION['username']) == false) {
+  $_SESSION['message'][] = 'Vous n\'avez pas accès à cette partie du site';
+  header('location: login.php');
+  exit();
+}
 
 if(isset($_GET['resetCompteur'])) {
  setcookie('compteur', 0, time() +3600);
