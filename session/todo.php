@@ -5,6 +5,7 @@ $_SESSION['message'] = [];
 
 $_SESSION['message'][] = 'vous êtiez sur todo.php';
 
+
 if(isset($_SESSION['username']) == false) {
   $_SESSION['message'][] = 'Vous n\'avez pas accès à cette partie du site';
   header('location: login.php');
@@ -17,6 +18,17 @@ if(isset($_GET['resetCompteur'])) {
  exit();
 }
 
+
+if(isset($_GET['first']) && count($_SESSION['todo']) > 0){
+  array_shift($_SESSION['todo']);
+  header('location: todo.php');
+}
+
+if(isset($_GET['last']) && count($_SESSION['todo']) > 0){
+  array_pop($_SESSION['todo']);
+  header('location: todo.php');
+}
+
 //VERIFIER COOKIE EXISTE
 if(isset($_COOKIE['compteur'])) {
    $newIndex = $_COOKIE['compteur'] + 1;
@@ -25,7 +37,6 @@ if(isset($_COOKIE['compteur'])) {
 } else {
   setcookie('compteur', 1, time()+3600);
 }
-
 
 
 //RESET TODO LIST
