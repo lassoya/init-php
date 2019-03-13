@@ -47,7 +47,11 @@ if(isset($_SESSION['todo']) === false) {
 
 //récupération des données
 if(isset($_POST['todo'])) {
-  $_SESSION['todo'][] = $_POST['todo'];
+  if(in_array($_POST['todo'], $_SESSION['todo'])){
+    echo '<br>élément déjà présent<br>';
+  } else {
+    $_SESSION['todo'][] = $_POST['todo'];
+  }
   //array_push($_SESSION['todo'], $_POST['todo']);
 }
 
