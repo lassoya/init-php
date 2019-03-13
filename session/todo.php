@@ -73,6 +73,8 @@ vous êtes connectés <a href='login.php?deconnexion=true'>Déconnexion</a>
 
 <?php
 echo "<h1>TODO LIST</h1>";
+  echo "<a href='?first=1'>Supprimer premier élément</a><br />";
+  echo "<a href='?last=1'>Supprimer dernier élément</a>";
 echo "<ul>";
 foreach($_SESSION['todo'] as $index => $todo) {
   echo '<li><a href="?delete=' . $index . '">X</a> '.$todo.'</li>';
