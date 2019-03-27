@@ -27,7 +27,13 @@ if($_SESSION['essais'] == 0) {
   $_SESSION['lettres_utilisees'] = [];
 } else if(isset($_POST['lettre'])) {
   //verifier que la lettre se trouve dans le mot
+  echo $_SESSION['mot'].'<br>';
 
+  if(strpos($_SESSION['mot'], $_POST['lettre']) !== false) {
+    echo 'oui';
+  } else {
+    echo 'non';
+  }
 }
 
 
