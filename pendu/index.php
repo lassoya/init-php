@@ -1,5 +1,6 @@
 <?php
 session_start();
+const MAX_ESSAIS = 10;
 
 $mots  = [
   "coquelicot",
@@ -13,8 +14,10 @@ $mots  = [
 ];
 
 
-$_SESSION['mot'] ='test';//
-$_SESSION['essais'] ='';//
-$_SESSION['lettres_utilisees'] ='';//
+$position = rand(0, count($mots)-1);
+$_SESSION['mot'] = $mots[$position];
+$_SESSION['essais'] = 0;
+$_SESSION['lettres_utilisees'] = [];
+
 
 echo $_SESSION['mot'];
