@@ -28,12 +28,8 @@ if($_SESSION['essais'] == 0) {
 } else if(isset($_POST['lettre'])) {
 
   //stocker la lettre si elle n'existe pas dans lettres utilisées
-  if(in_array($_POST['lettre'], $_SESSION['lettres_utilisees'])){
-    echo "vous avez déjà utilisé cette lettre";
-  } else {
-    $_SESSION['lettres_utilisees'][] = $_POST['lettre'];
-    print_r($_SESSION['lettres_utilisees']);
-  }
+
+
 
   if(strpos($_SESSION['mot'], $_POST['lettre']) !== false) {
     echo 'oui';
