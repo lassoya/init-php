@@ -41,6 +41,9 @@ if($_SESSION['essais'] == 0) {
 
 ?>
 
+<br>
+<div> Il vous reste <strong>x</strong> essais </div>
+
 <form action="" method="post">
 <?php
   $detail = [];
