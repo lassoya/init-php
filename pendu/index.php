@@ -53,11 +53,16 @@ if($_SESSION['essais'] === 0) {
 <br>
 <div> Il vous reste <strong><?= $_SESSION['essais'] ?></strong> essais </div>
 
+
 <form action="" method="post">
 <?php
   $detail = [];
   for($i=0; $i<strlen($_SESSION['mot']); $i++) {
-    $detail[] = '_';
+    if(in_array($_SESSION['mot'][$i], $_SESSION['lettres_utilisees'])){
+      $detail[] = $_SESSION['mot'][$i];
+    } else {
+      $detail[] = '_';
+    }
   }
   echo implode($detail, ' ');
  ?>
