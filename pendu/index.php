@@ -15,7 +15,13 @@ $mots  = [
   "bijouterie"
 ];
 
-if($_SESSION['essais'] == 0) {
+if($_SESSION['essais'] === 0) {
+/*  if(isset($_SESSION['mot'])){
+    header('refresh: 5; url= index.php');
+    echo "vous avez perdu";
+    exit;
+  }*/
+
   $position = rand(0, count($mots)-1);
   $_SESSION['mot'] = $mots[$position];
 
@@ -25,24 +31,27 @@ if($_SESSION['essais'] == 0) {
 
   $_SESSION['essais'] = MAX_ESSAIS;
   $_SESSION['lettres_utilisees'] = [];
+
 } else if(isset($_POST['lettre'])) {
 
   //stocker la lettre si elle n'existe pas dans lettres utilisées
-
-
-
-  if(strpos($_SESSION['mot'], $_POST['lettre']) !== false) {
-    echo 'oui';
+  if(in_array($_POST['lettre'], $_SESSION['lettres_utilisees'])) {
+    echo  "Vous avez déjà utilisé cette lettre";
   } else {
-    echo 'non';
+    $_SESSION['lettres_utilisees'][] = $_POST['lettre'];
+
+    if(strpos($_SESSION['mot'], $_POST['lettre']) !== false) {
+      echo 'oui';
+    } else {
+      $_SESSION['essais']--;
+      echo 'non';
+    }
   }
 }
-
-
 ?>
 
 <br>
-<div> Il vous reste <strong>x</strong> essais </div>
+<div> Il vous reste <strong><?= $_SESSION['essais'] ?></strong> essais </div>
 
 <form action="" method="post">
 <?php
