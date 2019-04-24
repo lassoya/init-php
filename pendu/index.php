@@ -1,6 +1,7 @@
 <?php
 session_start();
 const MAX_ESSAIS = 10;
+$alphabet = range('a', 'z');
 $_SESSION['essais'] = isset($_SESSION['essais']) ? $_SESSION['essais'] : 0;
 //$_SESSION['essais'] = $_SESSION['essais'] ?? 0;
 
@@ -39,7 +40,10 @@ if($_SESSION['essais'] === 0) {
 } else if(isset($_POST['lettre'])) {
 
   //stocker la lettre si elle n'existe pas dans lettres utilisées
-  if(in_array($_POST['lettre'], $_SESSION['lettres_utilisees'])) {
+  if(!in_array($_POST['lettre'], $alphabet)) {
+    echo  "Cette lettre n'est pas valide";
+  }
+  else if(in_array($_POST['lettre'], $_SESSION['lettres_utilisees'])) {
     echo  "Vous avez déjà utilisé cette lettre";
   } else {
     $_SESSION['lettres_utilisees'][] = $_POST['lettre'];
