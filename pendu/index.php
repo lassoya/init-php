@@ -48,7 +48,15 @@ if($_SESSION['essais'] === 0) {
     unset($_SESSION['alphabet'][$index]);
 
     if(strpos($_SESSION['mot'], $_POST['lettre']) !== false) {
-      echo 'oui';
+
+      if(!strstr(str_replace($_SESSION['alphabet'], '_', $_SESSION['mot']), '_')) {
+        header('location: gagne.php');
+        unset($_SESSION['mot']);
+        $_SESSION['essais'] = 0;
+        exit;
+      }
+
+
     } else {
       $_SESSION['essais']--;
       if($_SESSION['essais'] === 0){
