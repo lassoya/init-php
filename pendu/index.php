@@ -4,6 +4,9 @@ const MAX_ESSAIS = 10;
 $_SESSION['essais'] = isset($_SESSION['essais']) ? $_SESSION['essais'] : 0;
 //$_SESSION['essais'] = $_SESSION['essais'] ?? 0;
 
+/*unset($_SESSION);
+session_destroy();
+exit;*/
 $mots  = [
   "coquelicot",
   "cinema",
@@ -30,6 +33,7 @@ if($_SESSION['essais'] === 0) {
   $_SESSION['lettres_mot'] = array_unique($explodeWord);
 
   $_SESSION['essais'] = MAX_ESSAIS;
+  $_SESSION['alphabet'] = range('a', 'z');
   $_SESSION['lettres_utilisees'] = [];
 
 } else if(isset($_POST['lettre'])) {
@@ -39,6 +43,9 @@ if($_SESSION['essais'] === 0) {
     echo  "Vous avez déjà utilisé cette lettre";
   } else {
     $_SESSION['lettres_utilisees'][] = $_POST['lettre'];
+
+    $index = array_search($_POST['lettre'], $_SESSION['alphabet']);
+    unset($_SESSION['alphabet'][$index]);
 
     if(strpos($_SESSION['mot'], $_POST['lettre']) !== false) {
       echo 'oui';
@@ -56,7 +63,11 @@ if($_SESSION['essais'] === 0) {
 
 <form action="" method="post">
 <?php
+
+echo str_replace($_SESSION['alphabet'], '_', $_SESSION['mot']);
+/*
   $detail = [];
+
   for($i=0; $i<strlen($_SESSION['mot']); $i++) {
     if(in_array($_SESSION['mot'][$i], $_SESSION['lettres_utilisees'])){
       $detail[] = $_SESSION['mot'][$i];
@@ -65,6 +76,7 @@ if($_SESSION['essais'] === 0) {
     }
   }
   echo implode($detail, ' ');
+  */
  ?>
   <div>
     <label>Lettre</label>
