@@ -19,12 +19,12 @@ $mots  = [
   "bijouterie"
 ];
 
-if($_SESSION['essais'] === 0) {
-/*  if(isset($_SESSION['mot'])){
-    header('refresh: 5; url= index.php');
-    echo "vous avez perdu";
+if($_SESSION['essais'] === 1) {
+  if(isset($_SESSION['mot'])) {
+    header('location: perdu.php');
+    unset($_SESSION['mot']);
     exit;
-  }*/
+  }
 
   $position = rand(0, count($mots)-1);
   $_SESSION['mot'] = $mots[$position];
